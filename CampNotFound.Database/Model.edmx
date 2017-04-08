@@ -4,27 +4,666 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-        <EntityContainer Name="ModelTargetContainer" >
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="AccountSet" EntityType="Model.Store.AccountSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EventSet" EntityType="Model.Store.EventSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VoteSet" EntityType="Model.Store.VoteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategorySet" EntityType="Model.Store.CategorySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BoardSet" EntityType="Model.Store.BoardSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MessageSet" EntityType="Model.Store.MessageSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AlbumSet" EntityType="Model.Store.AlbumSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PhotoSet" EntityType="Model.Store.PhotoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsersEventsSet" EntityType="Model.Store.UsersEventsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EventCategory" EntityType="Model.Store.EventCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AccountCategory" EntityType="Model.Store.AccountCategory" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="EventVote" Association="Model.Store.EventVote">
+      <End Role="Event" EntitySet="EventSet" />
+      <End Role="Vote" EntitySet="VoteSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventCategory_Event" Association="Model.Store.FK_EventCategory_Event">
+      <End Role="Event" EntitySet="EventSet" />
+      <End Role="EventCategory" EntitySet="EventCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventCategory_Category" Association="Model.Store.FK_EventCategory_Category">
+      <End Role="Category" EntitySet="CategorySet" />
+      <End Role="EventCategory" EntitySet="EventCategory" />
+    </AssociationSet>
+    <AssociationSet Name="EventEvent" Association="Model.Store.EventEvent">
+      <End Role="MainEvent" EntitySet="EventSet" />
+      <End Role="ChildEvent" EntitySet="EventSet" />
+    </AssociationSet>
+    <AssociationSet Name="EventBoard" Association="Model.Store.EventBoard">
+      <End Role="Event" EntitySet="EventSet" />
+      <End Role="Board" EntitySet="BoardSet" />
+    </AssociationSet>
+    <AssociationSet Name="AlbumPhoto" Association="Model.Store.AlbumPhoto">
+      <End Role="Album" EntitySet="AlbumSet" />
+      <End Role="Photo" EntitySet="PhotoSet" />
+    </AssociationSet>
+    <AssociationSet Name="BoardMessage" Association="Model.Store.BoardMessage">
+      <End Role="Board" EntitySet="BoardSet" />
+      <End Role="Message" EntitySet="MessageSet" />
+    </AssociationSet>
+    <AssociationSet Name="EventAlbum" Association="Model.Store.EventAlbum">
+      <End Role="Event" EntitySet="EventSet" />
+      <End Role="Album" EntitySet="AlbumSet" />
+    </AssociationSet>
+    <AssociationSet Name="AccountBoard" Association="Model.Store.AccountBoard">
+      <End Role="Account" EntitySet="AccountSet" />
+      <End Role="Board" EntitySet="BoardSet" />
+    </AssociationSet>
+    <AssociationSet Name="AccountEvent" Association="Model.Store.AccountEvent">
+      <End Role="Account" EntitySet="AccountSet" />
+      <End Role="Event" EntitySet="EventSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountCategory_Account" Association="Model.Store.FK_AccountCategory_Account">
+      <End Role="Account" EntitySet="AccountSet" />
+      <End Role="AccountCategory" EntitySet="AccountCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountCategory_Category" Association="Model.Store.FK_AccountCategory_Category">
+      <End Role="Category" EntitySet="CategorySet" />
+      <End Role="AccountCategory" EntitySet="AccountCategory" />
+    </AssociationSet>
+    <AssociationSet Name="EventUsersEvents" Association="Model.Store.EventUsersEvents">
+      <End Role="Event" EntitySet="EventSet" />
+      <End Role="UsersEvents" EntitySet="UsersEventsSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AccountSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EventSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Events_Id" Type="int" Nullable="false" />
+    <Property Name="Board_Id" Type="int" Nullable="false" />
+    <Property Name="Album_Id" Type="int" Nullable="false" />
+    <Property Name="Account_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VoteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Event_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategorySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BoardSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Account_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MessageSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Board_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AlbumSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhotoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Album_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsersEventsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Event_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EventCategory">
+    <Key>
+      <PropertyRef Name="Events_Id" />
+      <PropertyRef Name="Categories_Id" />
+    </Key>
+    <Property Name="Events_Id" Type="int" Nullable="false" />
+    <Property Name="Categories_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AccountCategory">
+    <Key>
+      <PropertyRef Name="Account_Id" />
+      <PropertyRef Name="Category_Id" />
+    </Key>
+    <Property Name="Account_Id" Type="int" Nullable="false" />
+    <Property Name="Category_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="EventVote">
+    <End Role="Event" Type="Model.Store.EventSet" Multiplicity="1" />
+    <End Role="Vote" Type="Model.Store.VoteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vote">
+        <PropertyRef Name="Event_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EventEvent">
+    <End Role="MainEvent" Type="Model.Store.EventSet" Multiplicity="1" />
+    <End Role="ChildEvent" Type="Model.Store.EventSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MainEvent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChildEvent">
+        <PropertyRef Name="Events_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EventBoard">
+    <End Role="Event" Type="Model.Store.EventSet" Multiplicity="*" />
+    <End Role="Board" Type="Model.Store.BoardSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Board">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Board_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlbumPhoto">
+    <End Role="Album" Type="Model.Store.AlbumSet" Multiplicity="1" />
+    <End Role="Photo" Type="Model.Store.PhotoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="Album_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BoardMessage">
+    <End Role="Board" Type="Model.Store.BoardSet" Multiplicity="1" />
+    <End Role="Message" Type="Model.Store.MessageSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Board">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="Board_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EventAlbum">
+    <End Role="Event" Type="Model.Store.EventSet" Multiplicity="*" />
+    <End Role="Album" Type="Model.Store.AlbumSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Album_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountBoard">
+    <End Role="Account" Type="Model.Store.AccountSet" Multiplicity="1" />
+    <End Role="Board" Type="Model.Store.BoardSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Board">
+        <PropertyRef Name="Account_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountEvent">
+    <End Role="Account" Type="Model.Store.AccountSet" Multiplicity="1" />
+    <End Role="Event" Type="Model.Store.EventSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Account_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EventUsersEvents">
+    <End Role="Event" Type="Model.Store.EventSet" Multiplicity="1" />
+    <End Role="UsersEvents" Type="Model.Store.UsersEventsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersEvents">
+        <PropertyRef Name="Event_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventCategory_Event">
+    <End Role="Event" Type="Model.Store.EventSet" Multiplicity="1" />
+    <End Role="EventCategory" Type="Model.Store.EventCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EventCategory">
+        <PropertyRef Name="Events_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventCategory_Category">
+    <End Role="EventCategory" Type="Model.Store.EventCategory" Multiplicity="*" />
+    <End Role="Category" Type="Model.Store.CategorySet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EventCategory">
+        <PropertyRef Name="Categories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountCategory_Account">
+    <End Role="Account" Type="Model.Store.AccountSet" Multiplicity="1" />
+    <End Role="AccountCategory" Type="Model.Store.AccountCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccountCategory">
+        <PropertyRef Name="Account_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountCategory_Category">
+    <End Role="AccountCategory" Type="Model.Store.AccountCategory" Multiplicity="*" />
+    <End Role="Category" Type="Model.Store.CategorySet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccountCategory">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountSet" EntityType="Model.Account" />
+          <EntitySet Name="EventSet" EntityType="Model.Event" />
+          <EntitySet Name="VoteSet" EntityType="Model.Vote" />
+          <EntitySet Name="CategorySet" EntityType="Model.Category" />
+          <EntitySet Name="BoardSet" EntityType="Model.Board" />
+          <EntitySet Name="MessageSet" EntityType="Model.Message" />
+          <EntitySet Name="AlbumSet" EntityType="Model.Album" />
+          <EntitySet Name="PhotoSet" EntityType="Model.Photo" />
+          <AssociationSet Name="EventVote" Association="Model.EventVote">
+            <End Role="Event" EntitySet="EventSet" />
+            <End Role="Vote" EntitySet="VoteSet" />
+          </AssociationSet>
+          <AssociationSet Name="EventCategory" Association="Model.EventCategory">
+            <End Role="Event" EntitySet="EventSet" />
+            <End Role="Category" EntitySet="CategorySet" />
+          </AssociationSet>
+          <AssociationSet Name="EventEvent" Association="Model.EventEvent">
+            <End Role="MainEvent" EntitySet="EventSet" />
+            <End Role="ChildEvent" EntitySet="EventSet" />
+          </AssociationSet>
+          <AssociationSet Name="EventBoard" Association="Model.EventBoard">
+            <End Role="Event" EntitySet="EventSet" />
+            <End Role="Board" EntitySet="BoardSet" />
+          </AssociationSet>
+          <AssociationSet Name="AlbumPhoto" Association="Model.AlbumPhoto">
+            <End Role="Album" EntitySet="AlbumSet" />
+            <End Role="Photo" EntitySet="PhotoSet" />
+          </AssociationSet>
+          <AssociationSet Name="BoardMessage" Association="Model.BoardMessage">
+            <End Role="Board" EntitySet="BoardSet" />
+            <End Role="Message" EntitySet="MessageSet" />
+          </AssociationSet>
+          <AssociationSet Name="EventAlbum" Association="Model.EventAlbum">
+            <End Role="Event" EntitySet="EventSet" />
+            <End Role="Album" EntitySet="AlbumSet" />
+          </AssociationSet>
+          <AssociationSet Name="AccountBoard" Association="Model.AccountBoard">
+            <End Role="Account" EntitySet="AccountSet" />
+            <End Role="Board" EntitySet="BoardSet" />
+          </AssociationSet>
+          <AssociationSet Name="AccountEvent" Association="Model.AccountEvent">
+            <End Role="Account" EntitySet="AccountSet" />
+            <End Role="Event" EntitySet="EventSet" />
+          </AssociationSet>
+          <AssociationSet Name="AccountCategory" Association="Model.AccountCategory">
+            <End Role="Account" EntitySet="AccountSet" />
+            <End Role="Category" EntitySet="CategorySet" />
+          </AssociationSet>
+          <EntitySet Name="UsersEventsSet" EntityType="Model.UsersEvents" />
+          <AssociationSet Name="EventUsersEvents" Association="Model.EventUsersEvents">
+            <End Role="Event" EntitySet="EventSet" />
+            <End Role="UsersEvents" EntitySet="UsersEventsSet" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Boards" Relationship="Model.AccountBoard" FromRole="Account" ToRole="Board" />
+          <NavigationProperty Name="Events" Relationship="Model.AccountEvent" FromRole="Account" ToRole="Event" />
+          <NavigationProperty Name="Category" Relationship="Model.AccountCategory" FromRole="Account" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Votes" Relationship="Model.EventVote" FromRole="Event" ToRole="Vote" />
+          <NavigationProperty Name="Categories" Relationship="Model.EventCategory" FromRole="Event" ToRole="Category" />
+          <NavigationProperty Name="MainEvent" Relationship="Model.EventEvent" FromRole="MainEvent" ToRole="ChildEvent" />
+          <NavigationProperty Name="Events" Relationship="Model.EventEvent" FromRole="ChildEvent" ToRole="MainEvent" />
+          <NavigationProperty Name="Board" Relationship="Model.EventBoard" FromRole="Event" ToRole="Board" />
+          <NavigationProperty Name="Album" Relationship="Model.EventAlbum" FromRole="Event" ToRole="Album" />
+          <NavigationProperty Name="Account" Relationship="Model.AccountEvent" FromRole="Event" ToRole="Account" />
+          <NavigationProperty Name="UsersEvents" Relationship="Model.EventUsersEvents" FromRole="Event" ToRole="UsersEvents" />
+        </EntityType>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Event" Relationship="Model.EventVote" FromRole="Vote" ToRole="Event" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Events" Relationship="Model.EventCategory" FromRole="Category" ToRole="Event" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Model.AccountCategory" FromRole="Category" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Board">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Event" Relationship="Model.EventBoard" FromRole="Board" ToRole="Event" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Message" Relationship="Model.BoardMessage" FromRole="Board" ToRole="Message" />
+          <NavigationProperty Name="Account" Relationship="Model.AccountBoard" FromRole="Board" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" Nullable="false" />
+          <NavigationProperty Name="Board" Relationship="Model.BoardMessage" FromRole="Message" ToRole="Board" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Photos" Relationship="Model.AlbumPhoto" FromRole="Album" ToRole="Photo" />
+          <NavigationProperty Name="Event" Relationship="Model.EventAlbum" FromRole="Album" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Album" Relationship="Model.AlbumPhoto" FromRole="Photo" ToRole="Album" />
+        </EntityType>
+        <Association Name="EventVote">
+          <End Type="Model.Event" Role="Event" Multiplicity="1" />
+          <End Type="Model.Vote" Role="Vote" Multiplicity="*" />
+        </Association>
+        <Association Name="EventCategory">
+          <End Type="Model.Event" Role="Event" Multiplicity="*" />
+          <End Type="Model.Category" Role="Category" Multiplicity="*" />
+        </Association>
+        <Association Name="EventEvent">
+          <End Type="Model.Event" Role="MainEvent" Multiplicity="1" />
+          <End Type="Model.Event" Role="ChildEvent" Multiplicity="*" />
+        </Association>
+        <Association Name="EventBoard">
+          <End Type="Model.Event" Role="Event" Multiplicity="0..1" />
+          <End Type="Model.Board" Role="Board" Multiplicity="1" />
+        </Association>
+        <Association Name="AlbumPhoto">
+          <End Type="Model.Album" Role="Album" Multiplicity="1" />
+          <End Type="Model.Photo" Role="Photo" Multiplicity="*" />
+        </Association>
+        <Association Name="BoardMessage">
+          <End Type="Model.Board" Role="Board" Multiplicity="1" />
+          <End Type="Model.Message" Role="Message" Multiplicity="*" />
+        </Association>
+        <Association Name="EventAlbum">
+          <End Type="Model.Event" Role="Event" Multiplicity="0..1" />
+          <End Type="Model.Album" Role="Album" Multiplicity="1" />
+        </Association>
+        <Association Name="AccountBoard">
+          <End Type="Model.Account" Role="Account" Multiplicity="1" />
+          <End Type="Model.Board" Role="Board" Multiplicity="*" />
+        </Association>
+        <Association Name="AccountEvent">
+          <End Type="Model.Account" Role="Account" Multiplicity="1" />
+          <End Type="Model.Event" Role="Event" Multiplicity="*" />
+        </Association>
+        <Association Name="AccountCategory">
+          <End Type="Model.Account" Role="Account" Multiplicity="*" />
+          <End Type="Model.Category" Role="Category" Multiplicity="*" />
+        </Association>
+        <EntityType Name="UsersEvents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Event" Relationship="Model.EventUsersEvents" FromRole="UsersEvents" ToRole="Event" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="EventUsersEvents">
+          <End Type="Model.Event" Role="Event" Multiplicity="1" />
+          <End Type="Model.UsersEvents" Role="UsersEvents" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="Model" />
-        <Alias Key="Target" Value="Model.Store" />
-        <EntityContainerMapping CdmEntityContainer="ModelContainer" StorageEntityContainer="ModelTargetContainer">
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="AccountSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Account)">
+        <MappingFragment StoreEntitySet="AccountSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Event)">
+        <MappingFragment StoreEntitySet="EventSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VoteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Vote)">
+        <MappingFragment StoreEntitySet="VoteSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategorySet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Category)">
+        <MappingFragment StoreEntitySet="CategorySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BoardSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Board)">
+        <MappingFragment StoreEntitySet="BoardSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Message)">
+        <MappingFragment StoreEntitySet="MessageSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlbumSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Album)">
+        <MappingFragment StoreEntitySet="AlbumSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhotoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Photo)">
+        <MappingFragment StoreEntitySet="PhotoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersEventsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.UsersEvents)">
+        <MappingFragment StoreEntitySet="UsersEventsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="EventVote" TypeName="Model.EventVote" StoreEntitySet="VoteSet">
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Event_Id" />
+      </EndProperty>
+      <EndProperty Name="Vote">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EventCategory" TypeName="Model.EventCategory" StoreEntitySet="EventCategory">
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Events_Id" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Categories_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EventEvent" TypeName="Model.EventEvent" StoreEntitySet="EventSet">
+      <EndProperty Name="MainEvent">
+        <ScalarProperty Name="Id" ColumnName="Events_Id" />
+      </EndProperty>
+      <EndProperty Name="ChildEvent">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EventBoard" TypeName="Model.EventBoard" StoreEntitySet="EventSet">
+      <EndProperty Name="Board">
+        <ScalarProperty Name="Id" ColumnName="Board_Id" />
+      </EndProperty>
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AlbumPhoto" TypeName="Model.AlbumPhoto" StoreEntitySet="PhotoSet">
+      <EndProperty Name="Album">
+        <ScalarProperty Name="Id" ColumnName="Album_Id" />
+      </EndProperty>
+      <EndProperty Name="Photo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BoardMessage" TypeName="Model.BoardMessage" StoreEntitySet="MessageSet">
+      <EndProperty Name="Board">
+        <ScalarProperty Name="Id" ColumnName="Board_Id" />
+      </EndProperty>
+      <EndProperty Name="Message">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EventAlbum" TypeName="Model.EventAlbum" StoreEntitySet="EventSet">
+      <EndProperty Name="Album">
+        <ScalarProperty Name="Id" ColumnName="Album_Id" />
+      </EndProperty>
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AccountBoard" TypeName="Model.AccountBoard" StoreEntitySet="BoardSet">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="Id" ColumnName="Account_Id" />
+      </EndProperty>
+      <EndProperty Name="Board">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AccountEvent" TypeName="Model.AccountEvent" StoreEntitySet="EventSet">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="Id" ColumnName="Account_Id" />
+      </EndProperty>
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AccountCategory" TypeName="Model.AccountCategory" StoreEntitySet="AccountCategory">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="Id" ColumnName="Account_Id" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Category_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EventUsersEvents" TypeName="Model.EventUsersEvents" StoreEntitySet="UsersEventsSet">
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Event_Id" />
+      </EndProperty>
+      <EndProperty Name="UsersEvents">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -38,6 +677,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
