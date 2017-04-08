@@ -1,0 +1,733 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CampModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CampModelStoreContainer">
+    <EntitySet Name="EventSet" EntityType="CampModel.Store.EventSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VoteSet" EntityType="CampModel.Store.VoteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MessageSet" EntityType="CampModel.Store.MessageSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PhotoSet" EntityType="CampModel.Store.PhotoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BoardSet" EntityType="CampModel.Store.BoardSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CampSet" EntityType="CampModel.Store.CampSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategorySet" EntityType="CampModel.Store.CategorySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MemoryAlbumSet" EntityType="CampModel.Store.MemoryAlbumSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CurrencySet" EntityType="CampModel.Store.CurrencySet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CurrencyEvent" Association="CampModel.Store.CurrencyEvent">
+      <End Role="Currency" EntitySet="CurrencySet" />
+      <End Role="Event" EntitySet="EventSet" />
+    </AssociationSet>
+    <AssociationSet Name="BoardMessage" Association="CampModel.Store.BoardMessage">
+      <End Role="Board" EntitySet="BoardSet" />
+      <End Role="Message" EntitySet="MessageSet" />
+    </AssociationSet>
+    <AssociationSet Name="CampBoard" Association="CampModel.Store.CampBoard">
+      <End Role="Camp" EntitySet="CampSet" />
+      <End Role="Board" EntitySet="BoardSet" />
+    </AssociationSet>
+    <AssociationSet Name="EventVote" Association="CampModel.Store.EventVote">
+      <End Role="Event" EntitySet="EventSet" />
+      <End Role="Vote" EntitySet="VoteSet" />
+    </AssociationSet>
+    <AssociationSet Name="CampEvent" Association="CampModel.Store.CampEvent">
+      <End Role="Camp" EntitySet="CampSet" />
+      <End Role="Event" EntitySet="EventSet" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryEvent" Association="CampModel.Store.CategoryEvent">
+      <End Role="Category" EntitySet="CategorySet" />
+      <End Role="Event" EntitySet="EventSet" />
+    </AssociationSet>
+    <AssociationSet Name="AlbumPhoto" Association="CampModel.Store.AlbumPhoto">
+      <End Role="Album" EntitySet="MemoryAlbumSet" />
+      <End Role="Photo" EntitySet="PhotoSet" />
+    </AssociationSet>
+    <AssociationSet Name="EventEvent" Association="CampModel.Store.EventEvent">
+      <End Role="Event" EntitySet="EventSet" />
+      <End Role="Event1" EntitySet="EventSet" />
+    </AssociationSet>
+    <AssociationSet Name="EventBoard" Association="CampModel.Store.EventBoard">
+      <End Role="Event" EntitySet="EventSet" />
+      <End Role="Board" EntitySet="BoardSet" />
+    </AssociationSet>
+    <AssociationSet Name="EventPhoto" Association="CampModel.Store.EventPhoto">
+      <End Role="Event" EntitySet="EventSet" />
+      <End Role="Photo" EntitySet="PhotoSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="EventSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="User_Id" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="Currency_Id" Type="int" Nullable="false" />
+    <Property Name="Camp_Id" Type="int" Nullable="false" />
+    <Property Name="Category_Id" Type="int" Nullable="false" />
+    <Property Name="ParentEvent_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VoteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="bit" Nullable="false" />
+    <Property Name="User_Id" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="Event_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MessageSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Id" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="Board_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhotoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Link" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="Album_Id" Type="int" Nullable="false" />
+    <Property Name="Event_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BoardSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="Camp_Id" Type="int" Nullable="false" />
+    <Property Name="Events_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CampSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategorySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MemoryAlbumSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Id" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrencySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISOCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="CurrencyEvent">
+    <End Role="Currency" Type="CampModel.Store.CurrencySet" Multiplicity="1" />
+    <End Role="Event" Type="CampModel.Store.EventSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Currency_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BoardMessage">
+    <End Role="Board" Type="CampModel.Store.BoardSet" Multiplicity="1" />
+    <End Role="Message" Type="CampModel.Store.MessageSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Board">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="Board_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CampBoard">
+    <End Role="Camp" Type="CampModel.Store.CampSet" Multiplicity="1" />
+    <End Role="Board" Type="CampModel.Store.BoardSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Camp">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Board">
+        <PropertyRef Name="Camp_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EventVote">
+    <End Role="Event" Type="CampModel.Store.EventSet" Multiplicity="1" />
+    <End Role="Vote" Type="CampModel.Store.VoteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vote">
+        <PropertyRef Name="Event_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CampEvent">
+    <End Role="Camp" Type="CampModel.Store.CampSet" Multiplicity="1" />
+    <End Role="Event" Type="CampModel.Store.EventSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Camp">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Camp_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryEvent">
+    <End Role="Category" Type="CampModel.Store.CategorySet" Multiplicity="1" />
+    <End Role="Event" Type="CampModel.Store.EventSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlbumPhoto">
+    <End Role="Album" Type="CampModel.Store.MemoryAlbumSet" Multiplicity="1" />
+    <End Role="Photo" Type="CampModel.Store.PhotoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="Album_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EventEvent">
+    <End Role="Event" Type="CampModel.Store.EventSet" Multiplicity="1" />
+    <End Role="Event1" Type="CampModel.Store.EventSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Event1">
+        <PropertyRef Name="ParentEvent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EventBoard">
+    <End Role="Event" Type="CampModel.Store.EventSet" Multiplicity="1" />
+    <End Role="Board" Type="CampModel.Store.BoardSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Board">
+        <PropertyRef Name="Events_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EventPhoto">
+    <End Role="Event" Type="CampModel.Store.EventSet" Multiplicity="1" />
+    <End Role="Photo" Type="CampModel.Store.PhotoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="Event_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CampModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="CampModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EventSet" EntityType="CampModel.Event" />
+          <EntitySet Name="VoteSet" EntityType="CampModel.Vote" />
+          <EntitySet Name="MessageSet" EntityType="CampModel.Message" />
+          <EntitySet Name="PhotoSet" EntityType="CampModel.Photo" />
+          <EntitySet Name="BoardSet" EntityType="CampModel.Board" />
+          <EntitySet Name="CampSet" EntityType="CampModel.Camp" />
+          <EntitySet Name="CategorySet" EntityType="CampModel.Category" />
+          <EntitySet Name="MemoryAlbumSet" EntityType="CampModel.MemoryAlbum" />
+          <EntitySet Name="CurrencySet" EntityType="CampModel.Currency" />
+          <AssociationSet Name="CurrencyEvent" Association="CampModel.CurrencyEvent">
+            <End Role="Currency" EntitySet="CurrencySet" />
+            <End Role="Event" EntitySet="EventSet" />
+          </AssociationSet>
+          <AssociationSet Name="BoardMessage" Association="CampModel.BoardMessage">
+            <End Role="Board" EntitySet="BoardSet" />
+            <End Role="Message" EntitySet="MessageSet" />
+          </AssociationSet>
+          <AssociationSet Name="CampBoard" Association="CampModel.CampBoard">
+            <End Role="Camp" EntitySet="CampSet" />
+            <End Role="Board" EntitySet="BoardSet" />
+          </AssociationSet>
+          <AssociationSet Name="EventVote" Association="CampModel.EventVote">
+            <End Role="Event" EntitySet="EventSet" />
+            <End Role="Vote" EntitySet="VoteSet" />
+          </AssociationSet>
+          <AssociationSet Name="CampEvent" Association="CampModel.CampEvent">
+            <End Role="Camp" EntitySet="CampSet" />
+            <End Role="Event" EntitySet="EventSet" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryEvent" Association="CampModel.CategoryEvent">
+            <End Role="Category" EntitySet="CategorySet" />
+            <End Role="Event" EntitySet="EventSet" />
+          </AssociationSet>
+          <AssociationSet Name="AlbumPhoto" Association="CampModel.AlbumPhoto">
+            <End Role="Album" EntitySet="MemoryAlbumSet" />
+            <End Role="Photo" EntitySet="PhotoSet" />
+          </AssociationSet>
+          <AssociationSet Name="EventEvent" Association="CampModel.EventEvent">
+            <End Role="Event" EntitySet="EventSet" />
+            <End Role="Event1" EntitySet="EventSet" />
+          </AssociationSet>
+          <AssociationSet Name="EventBoard" Association="CampModel.EventBoard">
+            <End Role="Event" EntitySet="EventSet" />
+            <End Role="Board" EntitySet="BoardSet" />
+          </AssociationSet>
+          <AssociationSet Name="EventPhoto" Association="CampModel.EventPhoto">
+            <End Role="Event" EntitySet="EventSet" />
+            <End Role="Photo" EntitySet="PhotoSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" />
+          <Property Name="User_Id" Type="String" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="String" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Currency" Relationship="CampModel.CurrencyEvent" FromRole="Event" ToRole="Currency" />
+          <NavigationProperty Name="Vote" Relationship="CampModel.EventVote" FromRole="Event" ToRole="Vote" />
+          <NavigationProperty Name="Camp" Relationship="CampModel.CampEvent" FromRole="Event" ToRole="Camp" />
+          <NavigationProperty Name="Category" Relationship="CampModel.CategoryEvent" FromRole="Event" ToRole="Category" />
+          <NavigationProperty Name="ChildEvents" Relationship="CampModel.EventEvent" FromRole="Event" ToRole="Event1" />
+          <NavigationProperty Name="ParentEvent" Relationship="CampModel.EventEvent" FromRole="Event1" ToRole="Event" />
+          <NavigationProperty Name="Board" Relationship="CampModel.EventBoard" FromRole="Event" ToRole="Board" />
+          <NavigationProperty Name="Photo" Relationship="CampModel.EventPhoto" FromRole="Event" ToRole="Photo" />
+        </EntityType>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="Boolean" Nullable="false" />
+          <Property Name="User_Id" Type="String" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="String" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="CampModel.EventVote" FromRole="Vote" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" Nullable="false" />
+          <Property Name="User_Id" Type="String" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="String" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Board" Relationship="CampModel.BoardMessage" FromRole="Message" ToRole="Board" />
+        </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Link" Type="String" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="String" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Album" Relationship="CampModel.AlbumPhoto" FromRole="Photo" ToRole="Album" />
+          <NavigationProperty Name="Event" Relationship="CampModel.EventPhoto" FromRole="Photo" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Board">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="String" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Message" Relationship="CampModel.BoardMessage" FromRole="Board" ToRole="Message" />
+          <NavigationProperty Name="Camp" Relationship="CampModel.CampBoard" FromRole="Board" ToRole="Camp" />
+          <NavigationProperty Name="Events" Relationship="CampModel.EventBoard" FromRole="Board" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Camp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="String" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Board" Relationship="CampModel.CampBoard" FromRole="Camp" ToRole="Board" />
+          <NavigationProperty Name="Event" Relationship="CampModel.CampEvent" FromRole="Camp" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="String" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="CampModel.CategoryEvent" FromRole="Category" ToRole="Event" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MemoryAlbum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="User_Id" Type="String" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="String" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Photo" Relationship="CampModel.AlbumPhoto" FromRole="Album" ToRole="Photo" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ISOCode" Type="String" Nullable="false" />
+          <Property Name="Country" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="CampModel.CurrencyEvent" FromRole="Currency" ToRole="Event" />
+        </EntityType>
+        <Association Name="CurrencyEvent">
+          <End Type="CampModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="CampModel.Event" Role="Event" Multiplicity="*" />
+        </Association>
+        <Association Name="BoardMessage">
+          <End Type="CampModel.Board" Role="Board" Multiplicity="1" />
+          <End Type="CampModel.Message" Role="Message" Multiplicity="*" />
+        </Association>
+        <Association Name="CampBoard">
+          <End Type="CampModel.Camp" Role="Camp" Multiplicity="1" />
+          <End Type="CampModel.Board" Role="Board" Multiplicity="*" />
+        </Association>
+        <Association Name="EventVote">
+          <End Type="CampModel.Event" Role="Event" Multiplicity="1" />
+          <End Type="CampModel.Vote" Role="Vote" Multiplicity="*" />
+        </Association>
+        <Association Name="CampEvent">
+          <End Type="CampModel.Camp" Role="Camp" Multiplicity="1" />
+          <End Type="CampModel.Event" Role="Event" Multiplicity="*" />
+        </Association>
+        <Association Name="CategoryEvent">
+          <End Type="CampModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="CampModel.Event" Role="Event" Multiplicity="*" />
+        </Association>
+        <Association Name="AlbumPhoto">
+          <End Type="CampModel.MemoryAlbum" Role="Album" Multiplicity="1" />
+          <End Type="CampModel.Photo" Role="Photo" Multiplicity="*" />
+        </Association>
+        <Association Name="EventEvent">
+          <End Type="CampModel.Event" Role="Event" Multiplicity="1" />
+          <End Type="CampModel.Event" Role="Event1" Multiplicity="*" />
+        </Association>
+        <Association Name="EventBoard">
+          <End Type="CampModel.Event" Role="Event" Multiplicity="1" />
+          <End Type="CampModel.Board" Role="Board" Multiplicity="*" />
+        </Association>
+        <Association Name="EventPhoto">
+          <End Type="CampModel.Event" Role="Event" Multiplicity="1" />
+          <End Type="CampModel.Photo" Role="Photo" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CampModelStoreContainer" CdmEntityContainer="CampModelContainer">
+    <EntitySetMapping Name="EventSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CampModel.Event)">
+        <MappingFragment StoreEntitySet="EventSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VoteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CampModel.Vote)">
+        <MappingFragment StoreEntitySet="VoteSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CampModel.Message)">
+        <MappingFragment StoreEntitySet="MessageSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhotoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CampModel.Photo)">
+        <MappingFragment StoreEntitySet="PhotoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BoardSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CampModel.Board)">
+        <MappingFragment StoreEntitySet="BoardSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CampSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CampModel.Camp)">
+        <MappingFragment StoreEntitySet="CampSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategorySet">
+      <EntityTypeMapping TypeName="IsTypeOf(CampModel.Category)">
+        <MappingFragment StoreEntitySet="CategorySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemoryAlbumSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CampModel.MemoryAlbum)">
+        <MappingFragment StoreEntitySet="MemoryAlbumSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencySet">
+      <EntityTypeMapping TypeName="IsTypeOf(CampModel.Currency)">
+        <MappingFragment StoreEntitySet="CurrencySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ISOCode" ColumnName="ISOCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CurrencyEvent" TypeName="CampModel.CurrencyEvent" StoreEntitySet="EventSet">
+      <EndProperty Name="Currency">
+        <ScalarProperty Name="Id" ColumnName="Currency_Id" />
+      </EndProperty>
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BoardMessage" TypeName="CampModel.BoardMessage" StoreEntitySet="MessageSet">
+      <EndProperty Name="Board">
+        <ScalarProperty Name="Id" ColumnName="Board_Id" />
+      </EndProperty>
+      <EndProperty Name="Message">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CampBoard" TypeName="CampModel.CampBoard" StoreEntitySet="BoardSet">
+      <EndProperty Name="Camp">
+        <ScalarProperty Name="Id" ColumnName="Camp_Id" />
+      </EndProperty>
+      <EndProperty Name="Board">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EventVote" TypeName="CampModel.EventVote" StoreEntitySet="VoteSet">
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Event_Id" />
+      </EndProperty>
+      <EndProperty Name="Vote">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CampEvent" TypeName="CampModel.CampEvent" StoreEntitySet="EventSet">
+      <EndProperty Name="Camp">
+        <ScalarProperty Name="Id" ColumnName="Camp_Id" />
+      </EndProperty>
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CategoryEvent" TypeName="CampModel.CategoryEvent" StoreEntitySet="EventSet">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Category_Id" />
+      </EndProperty>
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AlbumPhoto" TypeName="CampModel.AlbumPhoto" StoreEntitySet="PhotoSet">
+      <EndProperty Name="Album">
+        <ScalarProperty Name="Id" ColumnName="Album_Id" />
+      </EndProperty>
+      <EndProperty Name="Photo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EventEvent" TypeName="CampModel.EventEvent" StoreEntitySet="EventSet">
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="ParentEvent_Id" />
+      </EndProperty>
+      <EndProperty Name="Event1">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EventBoard" TypeName="CampModel.EventBoard" StoreEntitySet="BoardSet">
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Events_Id" />
+      </EndProperty>
+      <EndProperty Name="Board">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EventPhoto" TypeName="CampModel.EventPhoto" StoreEntitySet="PhotoSet">
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Event_Id" />
+      </EndProperty>
+      <EndProperty Name="Photo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

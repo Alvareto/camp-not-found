@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F2BF920B-A90C-40C7-BBD9-A72120B7C72B}</ProjectGuid>
+    <ProjectGuid>{970DA975-33D1-465E-A39E-03CB698B6DA5}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CampNotFound.Application</RootNamespace>
-    <AssemblyName>CampNotFound.Application</AssemblyName>
+    <RootNamespace>CampNotFound.Web</RootNamespace>
+    <AssemblyName>CampNotFound.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -162,23 +162,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\BoardController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BoardController.cs" />
+    <Compile Include="Controllers\CampController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CurrencyController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\MemoryAlbumController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\MessageController.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MessageController.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -190,25 +192,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\cycling.jpg" />
-    <Content Include="Content\images\cycling2.jpg" />
-    <Content Include="Content\images\first-page.jpg" />
-    <Content Include="Content\images\food.jpg" />
-    <Content Include="Content\images\guitar.jpg" />
-    <Content Include="Content\images\kayaking.jpg" />
-    <Content Include="Content\images\recreation-and-sport.jpg" />
-    <Content Include="Content\images\tent.jpg" />
-    <Content Include="Content\images\volleyball.jpg" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\tcc.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="fonts\tcc.eot" />
-    <Content Include="fonts\tcc.ttf" />
-    <Content Include="fonts\tcc.woff" />
-    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -221,9 +209,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -257,31 +243,26 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Album\Create.cshtml" />
-    <Content Include="Views\Album\Delete.cshtml" />
-    <Content Include="Views\Album\Details.cshtml" />
-    <Content Include="Views\Album\Edit.cshtml" />
-    <Content Include="Views\Album\Index.cshtml" />
+    <Content Include="Views\Camp\Create.cshtml" />
+    <Content Include="Views\Camp\Delete.cshtml" />
+    <Content Include="Views\Camp\Details.cshtml" />
+    <Content Include="Views\Camp\Edit.cshtml" />
+    <Content Include="Views\Camp\Index.cshtml" />
     <Content Include="Views\Board\Create.cshtml" />
     <Content Include="Views\Board\Delete.cshtml" />
     <Content Include="Views\Board\Details.cshtml" />
     <Content Include="Views\Board\Edit.cshtml" />
     <Content Include="Views\Board\Index.cshtml" />
-    <Content Include="Views\Category\Create.cshtml" />
-    <Content Include="Views\Category\Delete.cshtml" />
-    <Content Include="Views\Category\Details.cshtml" />
-    <Content Include="Views\Category\Edit.cshtml" />
-    <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Event\Create.cshtml" />
     <Content Include="Views\Event\Delete.cshtml" />
     <Content Include="Views\Event\Details.cshtml" />
     <Content Include="Views\Event\Edit.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
-    <Content Include="Views\Message\Create.cshtml" />
-    <Content Include="Views\Message\Delete.cshtml" />
-    <Content Include="Views\Message\Details.cshtml" />
-    <Content Include="Views\Message\Edit.cshtml" />
-    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Vote\Create.cshtml" />
     <Content Include="Views\Vote\Delete.cshtml" />
     <Content Include="Views\Vote\Details.cshtml" />
@@ -292,6 +273,21 @@
     <Content Include="Views\Photo\Details.cshtml" />
     <Content Include="Views\Photo\Edit.cshtml" />
     <Content Include="Views\Photo\Index.cshtml" />
+    <Content Include="Views\Message\Create.cshtml" />
+    <Content Include="Views\Message\Delete.cshtml" />
+    <Content Include="Views\Message\Details.cshtml" />
+    <Content Include="Views\Message\Edit.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Currency\Create.cshtml" />
+    <Content Include="Views\Currency\Delete.cshtml" />
+    <Content Include="Views\Currency\Details.cshtml" />
+    <Content Include="Views\Currency\Edit.cshtml" />
+    <Content Include="Views\Currency\Index.cshtml" />
+    <Content Include="Views\MemoryAlbum\Create.cshtml" />
+    <Content Include="Views\MemoryAlbum\Delete.cshtml" />
+    <Content Include="Views\MemoryAlbum\Details.cshtml" />
+    <Content Include="Views\MemoryAlbum\Edit.cshtml" />
+    <Content Include="Views\MemoryAlbum\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -306,9 +302,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CampNotFound.Database\CampNotFound.Database.csproj">
-      <Project>{bc8c5354-64e6-48ef-9e95-43e574d3c18a}</Project>
-      <Name>CampNotFound.Database</Name>
+    <ProjectReference Include="..\CampNotFound.Data\CampNotFound.Data.csproj">
+      <Project>{b23baf84-7cef-43aa-b714-c7f96394c0a4}</Project>
+      <Name>CampNotFound.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -327,9 +323,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49893</DevelopmentServerPort>
+          <DevelopmentServerPort>61133</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:64015/</IISUrl>
+          <IISUrl>http://localhost:61133/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

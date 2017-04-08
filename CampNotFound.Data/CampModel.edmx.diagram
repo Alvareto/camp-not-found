@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e8fbb15c5887499397e8192dda7c3a57" Name="Diagram1" ZoomLevel="97" >
+        <EntityTypeShape EntityType="CampModel.Event" Width="1.5" PointX="3" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CampModel.Vote" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="CampModel.Message" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CampModel.Photo" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CampModel.Board" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CampModel.Camp" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CampModel.Category" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="CampModel.MemoryAlbum" Width="1.5" PointX="3" PointY="1.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="CampModel.Currency" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="false" />
+        <AssociationConnector Association="CampModel.CurrencyEvent" />
+        <AssociationConnector Association="CampModel.BoardMessage" />
+        <AssociationConnector Association="CampModel.CampBoard" />
+        <AssociationConnector Association="CampModel.EventVote" />
+        <AssociationConnector Association="CampModel.CampEvent" />
+        <AssociationConnector Association="CampModel.CategoryEvent" />
+        <AssociationConnector Association="CampModel.AlbumPhoto" />
+        <AssociationConnector Association="CampModel.EventEvent" />
+        <AssociationConnector Association="CampModel.EventBoard" />
+        <AssociationConnector Association="CampModel.EventPhoto" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

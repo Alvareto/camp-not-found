@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampNotFound.Application", 
 		{BC8C5354-64E6-48EF-9E95-43E574D3C18A} = {BC8C5354-64E6-48EF-9E95-43E574D3C18A}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampNotFound.Data", "CampNotFound.Data\CampNotFound.Data.csproj", "{B23BAF84-7CEF-43AA-B714-C7F96394C0A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampNotFound.Web", "CampNotFound.Web\CampNotFound.Web.csproj", "{970DA975-33D1-465E-A39E-03CB698B6DA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +28,14 @@ Global
 		{F2BF920B-A90C-40C7-BBD9-A72120B7C72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2BF920B-A90C-40C7-BBD9-A72120B7C72B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2BF920B-A90C-40C7-BBD9-A72120B7C72B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B23BAF84-7CEF-43AA-B714-C7F96394C0A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B23BAF84-7CEF-43AA-B714-C7F96394C0A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B23BAF84-7CEF-43AA-B714-C7F96394C0A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B23BAF84-7CEF-43AA-B714-C7F96394C0A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{970DA975-33D1-465E-A39E-03CB698B6DA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970DA975-33D1-465E-A39E-03CB698B6DA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970DA975-33D1-465E-A39E-03CB698B6DA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970DA975-33D1-465E-A39E-03CB698B6DA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
