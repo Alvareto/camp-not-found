@@ -2,13 +2,11 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/08/2017 14:36:57
--- Generated from EDMX file: C:\Users\Ivan Grgurina\Source\Repos\camp-not-found\CampNotFound.Database\Model.edmx
+-- Date Created: 04/08/2017 17:25:01
+-- Generated from EDMX file: C:\Users\marko.raguz\Documents\GitHub\camp-not-found\CampNotFound.Database\Model.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
-GO
-USE [master];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -17,11 +15,83 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_EventVote]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[VoteSet] DROP CONSTRAINT [FK_EventVote];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventCategory_Event]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventCategory] DROP CONSTRAINT [FK_EventCategory_Event];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventCategory_Category]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventCategory] DROP CONSTRAINT [FK_EventCategory_Category];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventEvent]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventSet] DROP CONSTRAINT [FK_EventEvent];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventBoard]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventSet] DROP CONSTRAINT [FK_EventBoard];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AlbumPhoto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PhotoSet] DROP CONSTRAINT [FK_AlbumPhoto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_BoardMessage]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MessageSet] DROP CONSTRAINT [FK_BoardMessage];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventAlbum]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventSet] DROP CONSTRAINT [FK_EventAlbum];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AccountBoard]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[BoardSet] DROP CONSTRAINT [FK_AccountBoard];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AccountEvent]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventSet] DROP CONSTRAINT [FK_AccountEvent];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AccountCategory_Account]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AccountCategory] DROP CONSTRAINT [FK_AccountCategory_Account];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AccountCategory_Category]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AccountCategory] DROP CONSTRAINT [FK_AccountCategory_Category];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventUsersEvents]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UsersEventsSet] DROP CONSTRAINT [FK_EventUsersEvents];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[AccountSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AccountSet];
+GO
+IF OBJECT_ID(N'[dbo].[EventSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[EventSet];
+GO
+IF OBJECT_ID(N'[dbo].[VoteSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[VoteSet];
+GO
+IF OBJECT_ID(N'[dbo].[CategorySet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CategorySet];
+GO
+IF OBJECT_ID(N'[dbo].[BoardSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[BoardSet];
+GO
+IF OBJECT_ID(N'[dbo].[MessageSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MessageSet];
+GO
+IF OBJECT_ID(N'[dbo].[AlbumSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AlbumSet];
+GO
+IF OBJECT_ID(N'[dbo].[PhotoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PhotoSet];
+GO
+IF OBJECT_ID(N'[dbo].[UsersEventsSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UsersEventsSet];
+GO
+IF OBJECT_ID(N'[dbo].[EventCategory]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[EventCategory];
+GO
+IF OBJECT_ID(N'[dbo].[AccountCategory]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AccountCategory];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
