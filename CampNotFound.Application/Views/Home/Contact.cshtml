@@ -1,17 +1,114 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<div class="timeline-container">
+    <div class="col-md-3 col-sm-3 datepicker-wrapper">
+        <label for="datepicker">Show events for:</label>
+        <input type="date" id="datepicker" class="datepicker input-text" />
+    </div>
+    <div class="col-md-9 col-sm-9 timeline-ribbon">
+        <h2>Week 10.04 - 16.04 events</h2>
+        <div class="timeline-wrapper">
+            <div class="arrows-wrapper">
+                <span class="previous-week icon-angle-double-left"></span>
+                <span class="previous-day icon-angle-left"></span>
+            </div>
+            <span class="timeline">
+                <span class="timeline-day"><span class="day-name">Mon</span><span class="active-day-indicator"></span></span>
+                <span class="timeline-day"><span class="day-name">Tue</span><span class="active-day-indicator"></span></span>
+                <span class="timeline-day"><span class="day-name">Wed</span><span class="active-day-indicator"></span></span>
+                <span class="timeline-day active-day"><span class="day-name">Thu</span><span class="active-day-indicator"></span></span>
+                <span class="timeline-day"><span class="day-name">Fri</span><span class="active-day-indicator"></span></span>
+                <span class="timeline-day"><span class="day-name">Sat</span><span class="active-day-indicator"></span></span>
+                <span class="timeline-day"><span class="day-name">Sun</span><span class="active-day-indicator"></span></span>
+            </span>
+            <div class="arrows-wrapper">
+                <span class="next-day icon-angle-right"></span>
+                <span class="next-week icon-angle-double-right"></span>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="col-md-3 col-sm-3 left-column">
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <div class="categories-wrapper">
+        <label>Show events:</label>
+        <ul class="category-list">
+            <li class="active-category">All events</li>
+            <li>Family events</li>
+            <li>Children events</li>
+            <li>Adults events</li>
+        </ul>
+    </div>
+</div>
+<div class="col-md-9 col-sm-9 right-column">
+    <div class="events-wrapper">
+        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4">
+            <div class="event">
+                <div>
+                    <h3><a href="#">Beach volleyball</a></h3>
+                    <img class="event-img" src="~/Content/images/volleyball.jpg">
+                    <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun for the whole family!</p>
+                    <p class="next-event">Starts: <span class="event-time">15:00h</span></p>
+                </div>
+                <button class="btn">Sign up</button>
+                <button class="btn hidden">Event has passed</button>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4">
+            <div class="event passed">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+                <button class="btn hidden">Sign up</button>
+                <button class="btn">Event has passed</button>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="clear"></div>
