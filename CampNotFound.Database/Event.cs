@@ -24,6 +24,10 @@ namespace CampNotFound.Database
         }
     
         public int Id { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public System.DateTime StartDateTime { get; set; }
+        public System.DateTime EndDateTime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vote> Votes { get; set; }

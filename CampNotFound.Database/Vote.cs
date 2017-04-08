@@ -15,7 +15,8 @@ namespace CampNotFound.Database
     public partial class Vote
     {
         public int Id { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
+        public int Value { get; set; }
     
         public virtual Event Event { get; set; }
     }

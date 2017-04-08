@@ -2,13 +2,11 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/08/2017 18:17:35
--- Generated from EDMX file: C:\Users\nikol.badanjak\Documents\Hackathon\camp-not-found\CampNotFound.Database\Model.edmx
+-- Date Created: 04/08/2017 19:40:07
+-- Generated from EDMX file: C:\Users\Ivan Grgurina\Source\Repos\camp-not-found\CampNotFound.Database\Model.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
-GO
-USE [master];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -109,6 +107,10 @@ GO
 -- Creating table 'EventSet'
 CREATE TABLE [dbo].[EventSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [Price] decimal(18,0)  NOT NULL,
+    [StartDateTime] datetime  NOT NULL,
+    [EndDateTime] datetime  NOT NULL,
     [Events_Id] int  NOT NULL,
     [Board_Id] int  NOT NULL,
     [Album_Id] int  NOT NULL,
@@ -119,7 +121,8 @@ GO
 -- Creating table 'VoteSet'
 CREATE TABLE [dbo].[VoteSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [UserId] nvarchar(max)  NOT NULL,
+    [UserId] int  NOT NULL,
+    [Value] int  NOT NULL,
     [Event_Id] int  NOT NULL
 );
 GO
@@ -143,20 +146,22 @@ GO
 CREATE TABLE [dbo].[MessageSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Text] nvarchar(max)  NOT NULL,
-    [UserId] nvarchar(max)  NOT NULL,
+    [UserId] int  NOT NULL,
     [Board_Id] int  NOT NULL
 );
 GO
 
 -- Creating table 'AlbumSet'
 CREATE TABLE [dbo].[AlbumSet] (
-    [Id] int IDENTITY(1,1) NOT NULL
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [UserId] int  NOT NULL
 );
 GO
 
 -- Creating table 'PhotoSet'
 CREATE TABLE [dbo].[PhotoSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
+    [UserId] int  NOT NULL,
     [Album_Id] int  NOT NULL
 );
 GO
@@ -164,7 +169,7 @@ GO
 -- Creating table 'UsersEventsSet'
 CREATE TABLE [dbo].[UsersEventsSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [UserId] nvarchar(max)  NOT NULL,
+    [UserId] int  NOT NULL,
     [Event_Id] int  NOT NULL
 );
 GO

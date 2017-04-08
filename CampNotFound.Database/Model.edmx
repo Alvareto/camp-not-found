@@ -82,6 +82,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+    <Property Name="EndDateTime" Type="datetime" Nullable="false" />
     <Property Name="Events_Id" Type="int" Nullable="false" />
     <Property Name="Board_Id" Type="int" Nullable="false" />
     <Property Name="Album_Id" Type="int" Nullable="false" />
@@ -92,7 +96,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Value" Type="int" Nullable="false" />
     <Property Name="Event_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CategorySet">
@@ -116,7 +121,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="Board_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AlbumSet">
@@ -124,12 +129,14 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PhotoSet">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="Album_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="UsersEventsSet">
@@ -137,7 +144,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="Event_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="EventCategory">
@@ -394,6 +401,10 @@
           <NavigationProperty Name="Album" Relationship="Model.EventAlbum" FromRole="Event" ToRole="Album" />
           <NavigationProperty Name="Account" Relationship="Model.AccountEvent" FromRole="Event" ToRole="Account" />
           <NavigationProperty Name="UsersEvents" Relationship="Model.EventUsersEvents" FromRole="Event" ToRole="UsersEvents" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
+          <Property Name="StartDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="EndDateTime" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="Vote">
           <Key>
@@ -401,7 +412,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Event" Relationship="Model.EventVote" FromRole="Vote" ToRole="Event" />
-          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -429,7 +441,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" Nullable="false" />
           <NavigationProperty Name="Board" Relationship="Model.BoardMessage" FromRole="Message" ToRole="Board" />
-          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Album">
           <Key>
@@ -438,6 +450,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Photos" Relationship="Model.AlbumPhoto" FromRole="Album" ToRole="Photo" />
           <NavigationProperty Name="Event" Relationship="Model.EventAlbum" FromRole="Album" ToRole="Event" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Photo">
           <Key>
@@ -445,6 +458,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Album" Relationship="Model.AlbumPhoto" FromRole="Photo" ToRole="Album" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="EventVote">
           <End Type="Model.Event" Role="Event" Multiplicity="1" />
@@ -492,7 +506,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Event" Relationship="Model.EventUsersEvents" FromRole="UsersEvents" ToRole="Event" />
-          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="EventUsersEvents">
           <End Type="Model.Event" Role="Event" Multiplicity="1" />
@@ -516,6 +530,10 @@
       <EntityTypeMapping TypeName="IsTypeOf(Model.Event)">
         <MappingFragment StoreEntitySet="EventSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -524,6 +542,7 @@
         <MappingFragment StoreEntitySet="VoteSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -556,6 +575,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(Model.Album)">
         <MappingFragment StoreEntitySet="AlbumSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -563,6 +583,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(Model.Photo)">
         <MappingFragment StoreEntitySet="PhotoSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

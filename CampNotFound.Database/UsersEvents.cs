@@ -15,7 +15,7 @@ namespace CampNotFound.Database
     public partial class UsersEvents
     {
         public int Id { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
     
         public virtual Event Event { get; set; }
     }
