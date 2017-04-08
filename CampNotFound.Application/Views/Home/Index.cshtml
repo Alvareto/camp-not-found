@@ -1,14 +1,108 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<div class="timeline-ribbon">
+    <h2>This weeks events</h2>
+    <div class="timeline-wrapper">
+        <div class="arrows-wrapper">
+            <span class="previous-week icon-angle-double-left"></span>
+            <span class="previous-day icon-angle-left"></span>
+        </div>
 
-<div class="jumbotron">
+        <span class="timeline">
+            <span class="timeline-day"></span>
+            <span class="timeline-day"></span>
+            <span class="timeline-day"></span>
+            <span class="timeline-day active-day"></span>
+            <span class="timeline-day"></span>
+            <span class="timeline-day"></span>
+            <span class="timeline-day"></span>
+        </span>
+        <div class="arrows-wrapper">
+            <span class="next-day icon-angle-right"></span>
+            <span class="next-week icon-angle-double-right"></span>
+        </div>
+    </div>
+</div>
+
+@*<div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+</div>*@
 
-<div class="row">
+<div class="col-md-2 col-sm-2 left-column">
+    <div class="datepicker-wrapper">
+        <label for="datepicker">Show events for:</label>
+        <input type="date" id="datepicker" class="datepicker" />
+    </div>
+</div>
+<div class="col-md-10 col-sm-10 right-column">
+    <div class="events-wrapper">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="event">
+                <div>
+                    <h3><a href="#">Beach volleyball</a></h3>
+                    <img class="event-img" src="~/Content/images/volleyball.jpg">
+                    <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun for the whole family!</p>
+                </div>
+                <button class="btn">Sign up</button>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="event">
+                <h3>Beach volleyball</h3>
+                <img class="event-img" src="~/Content/images/volleyball.jpg">
+                <p class="short-description">Play volleyball with other people on the beach. Nothing professional, only pure fun fot the whole family!</p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="clear"></div>
+@*<div class="row">
     <div class="col-md-4">
         <h2>Getting started</h2>
         <p>
@@ -28,4 +122,4 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
-</div>
+</div>*@
