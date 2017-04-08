@@ -12,11 +12,11 @@ namespace CampNotFound.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class UsersEvents
+    public partial class C__MigrationHistory
     {
-        public int Id { get; set; }
-        public int UserId { get; set; }
-    
-        public virtual Event Event { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

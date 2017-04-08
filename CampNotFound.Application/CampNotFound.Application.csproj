@@ -162,14 +162,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BoardController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\BoardController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -182,10 +182,10 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="PhotoController.cs" />
+    <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Controllers\VoteController.cs" />
+    <Compile Include="VoteController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -213,7 +213,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -272,16 +274,16 @@
     <Content Include="Views\Message\Details.cshtml" />
     <Content Include="Views\Message\Edit.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
-    <Content Include="Views\Photo\Create.cshtml" />
-    <Content Include="Views\Photo\Delete.cshtml" />
-    <Content Include="Views\Photo\Details.cshtml" />
-    <Content Include="Views\Photo\Edit.cshtml" />
-    <Content Include="Views\Photo\Index.cshtml" />
     <Content Include="Views\Vote\Create.cshtml" />
     <Content Include="Views\Vote\Delete.cshtml" />
     <Content Include="Views\Vote\Details.cshtml" />
     <Content Include="Views\Vote\Edit.cshtml" />
     <Content Include="Views\Vote\Index.cshtml" />
+    <Content Include="Views\Photo\Create.cshtml" />
+    <Content Include="Views\Photo\Delete.cshtml" />
+    <Content Include="Views\Photo\Details.cshtml" />
+    <Content Include="Views\Photo\Edit.cshtml" />
+    <Content Include="Views\Photo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

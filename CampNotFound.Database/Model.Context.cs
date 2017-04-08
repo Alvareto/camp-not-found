@@ -33,6 +33,10 @@ namespace CampNotFound.Database
         public virtual DbSet<Message> MessageSet { get; set; }
         public virtual DbSet<Album> AlbumSet { get; set; }
         public virtual DbSet<Photo> PhotoSet { get; set; }
-        public virtual DbSet<UsersEvents> UsersEventsSet { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
     }
 }

@@ -12,19 +12,18 @@ namespace CampNotFound.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Album
+    public partial class AspNetRoles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Album()
+        public AspNetRoles()
         {
-            this.Photos = new HashSet<Photo>();
+            this.AspNetUsers = new HashSet<AspNetUsers>();
         }
     
-        public int Id { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Photo> Photos { get; set; }
-        public virtual Event Event { get; set; }
-        public virtual AspNetUsers User { get; set; }
+        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
     }
 }

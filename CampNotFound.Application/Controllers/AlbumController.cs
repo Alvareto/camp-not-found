@@ -35,7 +35,7 @@ namespace CampNotFound.Application.Controllers
         // GET: Album/Create
         public ActionResult Create()
         {
-            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id");
+            ViewBag.Id = new SelectList(db.EventSet, "Id", "Name");
             return View();
         }
 
@@ -53,7 +53,7 @@ namespace CampNotFound.Application.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id", album.Id);
+            ViewBag.Id = new SelectList(db.EventSet, "Id", "Name", album.Id);
             return View(album);
         }
 
@@ -69,7 +69,7 @@ namespace CampNotFound.Application.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id", album.Id);
+            ViewBag.Id = new SelectList(db.EventSet, "Id", "Name", album.Id);
             return View(album);
         }
 
@@ -86,7 +86,7 @@ namespace CampNotFound.Application.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id", album.Id);
+            ViewBag.Id = new SelectList(db.EventSet, "Id", "Name", album.Id);
             return View(album);
         }
 

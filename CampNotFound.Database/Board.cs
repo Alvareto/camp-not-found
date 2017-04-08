@@ -17,7 +17,7 @@ namespace CampNotFound.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Board()
         {
-            this.Message = new HashSet<Message>();
+            this.Messages = new HashSet<Message>();
         }
     
         public int Id { get; set; }
@@ -25,7 +25,7 @@ namespace CampNotFound.Database
     
         public virtual Event Event { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Message> Message { get; set; }
+        public virtual ICollection<Message> Messages { get; set; }
         public virtual Account Account { get; set; }
     }
 }

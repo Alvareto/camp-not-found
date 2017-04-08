@@ -20,7 +20,7 @@ namespace CampNotFound.Database
             this.Votes = new HashSet<Vote>();
             this.Categories = new HashSet<Category>();
             this.MainEvent = new HashSet<Event>();
-            this.UsersEvents = new HashSet<UsersEvents>();
+            this.Users = new HashSet<AspNetUsers>();
         }
     
         public int Id { get; set; }
@@ -40,6 +40,6 @@ namespace CampNotFound.Database
         public virtual Album Album { get; set; }
         public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsersEvents> UsersEvents { get; set; }
+        public virtual ICollection<AspNetUsers> Users { get; set; }
     }
 }

@@ -35,13 +35,13 @@ namespace CampNotFound.Application.Controllers
         // GET: Board/Create
         public ActionResult Create()
         {
-            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id");
+            ViewBag.Id = new SelectList(db.EventSet, "Id", "Name");
             return View();
         }
 
         // POST: Board/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name")] Board board)
@@ -53,7 +53,7 @@ namespace CampNotFound.Application.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id", board.Id);
+            ViewBag.Id = new SelectList(db.EventSet, "Id", "Name", board.Id);
             return View(board);
         }
 
@@ -69,13 +69,13 @@ namespace CampNotFound.Application.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id", board.Id);
+            ViewBag.Id = new SelectList(db.EventSet, "Id", "Name", board.Id);
             return View(board);
         }
 
         // POST: Board/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name")] Board board)
@@ -86,7 +86,7 @@ namespace CampNotFound.Application.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id", board.Id);
+            ViewBag.Id = new SelectList(db.EventSet, "Id", "Name", board.Id);
             return View(board);
         }
 

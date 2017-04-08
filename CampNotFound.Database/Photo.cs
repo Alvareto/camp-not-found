@@ -15,7 +15,6 @@ namespace CampNotFound.Database
     public partial class Photo
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
     
         public virtual Album Album { get; set; }
     }
