@@ -183,7 +183,7 @@ textarea {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 36rem;
+    min-height: 36rem;
 }
 .event h3 {
     margin: 0;
