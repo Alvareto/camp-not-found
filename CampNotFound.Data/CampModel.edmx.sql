@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/09/2017 00:44:23
--- Generated from EDMX file: C:\Users\Ivan Grgurina\Source\Repos\camp-not-found\CampNotFound.Data\CampModel.edmx
+-- Date Created: 04/09/2017 01:42:23
+-- Generated from EDMX file: C:\Users\marko.raguz\Documents\GitHub\camp-not-found\CampNotFound.Data\CampModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,68 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_CurrencyEvent]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventSet] DROP CONSTRAINT [FK_CurrencyEvent];
+GO
+IF OBJECT_ID(N'[dbo].[FK_BoardMessage]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MessageSet] DROP CONSTRAINT [FK_BoardMessage];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CampBoard]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[BoardSet] DROP CONSTRAINT [FK_CampBoard];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventVote]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[VoteSet] DROP CONSTRAINT [FK_EventVote];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CampEvent]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventSet] DROP CONSTRAINT [FK_CampEvent];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CategoryEvent]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventSet] DROP CONSTRAINT [FK_CategoryEvent];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AlbumPhoto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PhotoSet] DROP CONSTRAINT [FK_AlbumPhoto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventEvent]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventSet] DROP CONSTRAINT [FK_EventEvent];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventBoard]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[BoardSet] DROP CONSTRAINT [FK_EventBoard];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventPhoto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PhotoSet] DROP CONSTRAINT [FK_EventPhoto];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[EventSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[EventSet];
+GO
+IF OBJECT_ID(N'[dbo].[VoteSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[VoteSet];
+GO
+IF OBJECT_ID(N'[dbo].[MessageSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MessageSet];
+GO
+IF OBJECT_ID(N'[dbo].[PhotoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PhotoSet];
+GO
+IF OBJECT_ID(N'[dbo].[BoardSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[BoardSet];
+GO
+IF OBJECT_ID(N'[dbo].[CampSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CampSet];
+GO
+IF OBJECT_ID(N'[dbo].[CategorySet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CategorySet];
+GO
+IF OBJECT_ID(N'[dbo].[MemoryAlbumSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MemoryAlbumSet];
+GO
+IF OBJECT_ID(N'[dbo].[CurrencySet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CurrencySet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
