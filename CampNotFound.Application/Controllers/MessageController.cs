@@ -1,121 +1,112 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using CampNotFound.Database;
 
-namespace CampNotFound.Application
+namespace CampNotFound.Application.Controllers
 {
-    public class BoardController : Controller
+    public class MessageController : Controller
     {
         private ModelContainer db = new ModelContainer();
 
-        // GET: Board
+        // GET: Message
         public ActionResult Index()
         {
-            var boardSet = db.BoardSet.Include(b => b.Event);
-            return View(boardSet.ToList());
+            return View(db.MessageSet.ToList());
         }
 
-        // GET: Board/Details/5
+        // GET: Message/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Board board = db.BoardSet.Find(id);
-            if (board == null)
+            Message message = db.MessageSet.Find(id);
+            if (message == null)
             {
                 return HttpNotFound();
             }
-            return View(board);
+            return View(message);
         }
 
-        // GET: Board/Create
+        // GET: Message/Create
         public ActionResult Create()
         {
-            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id");
             return View();
         }
 
-        // POST: Board/Create
+        // POST: Message/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Board board)
+        public ActionResult Create([Bind(Include = "Id,Text,UserId")] Message message)
         {
             if (ModelState.IsValid)
             {
-                db.BoardSet.Add(board);
+                db.MessageSet.Add(message);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id", board.Id);
-            return View(board);
+            return View(message);
         }
 
-        // GET: Board/Edit/5
+        // GET: Message/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Board board = db.BoardSet.Find(id);
-            if (board == null)
+            Message message = db.MessageSet.Find(id);
+            if (message == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id", board.Id);
-            return View(board);
+            return View(message);
         }
 
-        // POST: Board/Edit/5
+        // POST: Message/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Board board)
+        public ActionResult Edit([Bind(Include = "Id,Text,UserId")] Message message)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(board).State = EntityState.Modified;
+                db.Entry(message).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id", board.Id);
-            return View(board);
+            return View(message);
         }
 
-        // GET: Board/Delete/5
+        // GET: Message/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Board board = db.BoardSet.Find(id);
-            if (board == null)
+            Message message = db.MessageSet.Find(id);
+            if (message == null)
             {
                 return HttpNotFound();
             }
-            return View(board);
+            return View(message);
         }
 
-        // POST: Board/Delete/5
+        // POST: Message/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Board board = db.BoardSet.Find(id);
-            db.BoardSet.Remove(board);
+            Message message = db.MessageSet.Find(id);
+            db.MessageSet.Remove(message);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,116 +1,112 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using CampNotFound.Database;
 
-namespace CampNotFound.Application
+namespace CampNotFound.Application.Controllers
 {
-    public class VoteController : Controller
+    public class CategoryController : Controller
     {
         private ModelContainer db = new ModelContainer();
 
-        // GET: Vote
+        // GET: Category
         public ActionResult Index()
         {
-            return View(db.VoteSet.ToList());
+            return View(db.CategorySet.ToList());
         }
 
-        // GET: Vote/Details/5
+        // GET: Category/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vote vote = db.VoteSet.Find(id);
-            if (vote == null)
+            Category category = db.CategorySet.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(vote);
+            return View(category);
         }
 
-        // GET: Vote/Create
+        // GET: Category/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Vote/Create
+        // POST: Category/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId")] Vote vote)
+        public ActionResult Create([Bind(Include = "Id,Name")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.VoteSet.Add(vote);
+                db.CategorySet.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(vote);
+            return View(category);
         }
 
-        // GET: Vote/Edit/5
+        // GET: Category/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vote vote = db.VoteSet.Find(id);
-            if (vote == null)
+            Category category = db.CategorySet.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(vote);
+            return View(category);
         }
 
-        // POST: Vote/Edit/5
+        // POST: Category/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserId")] Vote vote)
+        public ActionResult Edit([Bind(Include = "Id,Name")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vote).State = EntityState.Modified;
+                db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(vote);
+            return View(category);
         }
 
-        // GET: Vote/Delete/5
+        // GET: Category/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vote vote = db.VoteSet.Find(id);
-            if (vote == null)
+            Category category = db.CategorySet.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(vote);
+            return View(category);
         }
 
-        // POST: Vote/Delete/5
+        // POST: Category/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Vote vote = db.VoteSet.Find(id);
-            db.VoteSet.Remove(vote);
+            Category category = db.CategorySet.Find(id);
+            db.CategorySet.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

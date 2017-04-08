@@ -1,116 +1,117 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using CampNotFound.Database;
 
-namespace CampNotFound.Application
+namespace CampNotFound.Application.Controllers
 {
-    public class EventController : Controller
+    public class BoardController : Controller
     {
         private ModelContainer db = new ModelContainer();
 
-        // GET: Event
+        // GET: Board
         public ActionResult Index()
         {
-            return View(db.EventSet.ToList());
+            var boardSet = db.BoardSet.Include(b => b.Event);
+            return View(boardSet.ToList());
         }
 
-        // GET: Event/Details/5
+        // GET: Board/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.EventSet.Find(id);
-            if (@event == null)
+            Board board = db.BoardSet.Find(id);
+            if (board == null)
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return View(board);
         }
 
-        // GET: Event/Create
+        // GET: Board/Create
         public ActionResult Create()
         {
+            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id");
             return View();
         }
 
-        // POST: Event/Create
+        // POST: Board/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id")] Event @event)
+        public ActionResult Create([Bind(Include = "Id,Name")] Board board)
         {
             if (ModelState.IsValid)
             {
-                db.EventSet.Add(@event);
+                db.BoardSet.Add(board);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(@event);
+            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id", board.Id);
+            return View(board);
         }
 
-        // GET: Event/Edit/5
+        // GET: Board/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.EventSet.Find(id);
-            if (@event == null)
+            Board board = db.BoardSet.Find(id);
+            if (board == null)
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id", board.Id);
+            return View(board);
         }
 
-        // POST: Event/Edit/5
+        // POST: Board/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id")] Event @event)
+        public ActionResult Edit([Bind(Include = "Id,Name")] Board board)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(@event).State = EntityState.Modified;
+                db.Entry(board).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(@event);
+            ViewBag.Id = new SelectList(db.EventSet, "Id", "Id", board.Id);
+            return View(board);
         }
 
-        // GET: Event/Delete/5
+        // GET: Board/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.EventSet.Find(id);
-            if (@event == null)
+            Board board = db.BoardSet.Find(id);
+            if (board == null)
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return View(board);
         }
 
-        // POST: Event/Delete/5
+        // POST: Board/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Event @event = db.EventSet.Find(id);
-            db.EventSet.Remove(@event);
+            Board board = db.BoardSet.Find(id);
+            db.BoardSet.Remove(board);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
