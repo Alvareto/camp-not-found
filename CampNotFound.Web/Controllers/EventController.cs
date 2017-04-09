@@ -65,26 +65,7 @@ namespace CampNotFound.Web.Controllers
             return View(@event);
         }
 
-        private List<SelectListItem> GetCurrencyDropdown()
-        {
-            ItemsStore item = itemStoreRepository.FindById(id);
-            ViewBag.CategoryId = new SelectList(categoryRepository.Query().Get(),
-            "Id", "Name", item.CategoryId);
-
-            ViewBag.CurrencyId = new SelectList(db.CurrencySet.)
-            List<SelectListItem> items = new List<SelectListItem>();
-
-            items.Add(new SelectListItem { Text = "Action", Value = "0" });
-
-            items.Add(new SelectListItem { Text = "Drama", Value = "1" });
-
-            items.Add(new SelectListItem { Text = "Comedy", Value = "2", Selected = true });
-
-            items.Add(new SelectListItem { Text = "Science Fiction", Value = "3" });
-
-            //ViewBag.MovieType = items;
-            return items;
-        }
+        private SelectList GetCurrencyDropdown() => new SelectList(db.CurrencySet.ToList(), "Id", "ISOCode");
 
         // GET: Event/Edit/5
         public ActionResult Edit(int? id)
