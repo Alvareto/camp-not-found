@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CampNotFound.Data;
+using Microsoft.AspNet.Identity;
 
 namespace CampNotFound.Web.Controllers
 {
@@ -44,7 +45,9 @@ namespace CampNotFound.Web.Controllers
         // GET: Event/Create
         public ActionResult Create()
         {
-            ViewBag.SelectCurrencyOptions = GetCurrencyDropdown();
+            ViewBag.SelectCurrencyOptions = GetCurrenciesDropdown();
+            ViewBag.SelectCategoryOptions = GetCategoriesDropdown();
+            ViewBag.SelectParentEventOptions = GetParentEventDropdown();
             return View();
         }
 
@@ -53,8 +56,21 @@ namespace CampNotFound.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Price,StartDate,EndDate,User_Id,CreatedBy,LastModifiedBy,CreatedDate,LastModifiedDate,Currency")] Event @event)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,Price,StartDate,EndDate,User_Id,CreatedBy,LastModifiedBy,CreatedDate,LastModifiedDate,Currency,Camp")] Event @event, int currencyId, int categoryId, int parentEventId)
         {
+            @event.Camp = db.CampSet.FirstOrDefault();
+            @event.Currency = db.CurrencySet.Find(currencyId);
+            @event.Category = db.CategorySet.Find(categoryId);
+            @event.ParentEvent = db.EventSet.Find(parentEventId);
+
+            var userId = GetCurrentUserId();
+            @event.User_Id = userId;
+            @event.CreatedBy = userId;
+            @event.LastModifiedBy = userId;
+            var moment = DateTime.Now;
+            @event.CreatedDate = moment;
+            @event.LastModifiedDate = moment;
+
             if (ModelState.IsValid)
             {
                 db.EventSet.Add(@event);
@@ -62,10 +78,14 @@ namespace CampNotFound.Web.Controllers
                 return RedirectToAction("Index");
             }
 
+
             return View(@event);
         }
 
-        private SelectList GetCurrencyDropdown() => new SelectList(db.CurrencySet.ToList(), "Id", "ISOCode");
+        private SelectList GetCurrenciesDropdown() => new SelectList(db.CurrencySet.ToList(), "Id", "ISOCode");
+        private SelectList GetCategoriesDropdown() => new SelectList(db.CategorySet.ToList(), "Id", "Name");
+        private SelectList GetParentEventDropdown() => new SelectList(db.EventSet.ToList(), "Id", "Name");
+        private String GetCurrentUserId() => User.Identity.GetUserId();
 
         // GET: Event/Edit/5
         public ActionResult Edit(int? id)
