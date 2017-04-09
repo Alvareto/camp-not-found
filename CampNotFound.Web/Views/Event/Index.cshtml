@@ -43,8 +43,7 @@
             <li class="active-category">All events</li>
             @foreach (var item in (List<Category>)ViewBag.CategoriesList)
             {
-                <li>Family Events</li>
-
+                <li>@item.Name</li>
             }
         </ul>
     </div>
