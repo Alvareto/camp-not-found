@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/09/2017 04:50:26
+-- Date Created: 04/09/2017 05:42:29
 -- Generated from EDMX file: C:\Users\Ivan Grgurina\Source\Repos\camp-not-found\CampNotFound.Data\CampModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [DatabaseNotFound];
+--USE [CampDb];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO

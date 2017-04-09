@@ -44,7 +44,7 @@ namespace CampNotFound.Web.Controllers
         // GET: Event/Create
         public ActionResult Create()
         {
-            ViewBag.MovieType = GetCurrencyDropdown();
+            ViewBag.SelectCurrencyOptions = GetCurrencyDropdown();
             return View();
         }
 
@@ -53,7 +53,7 @@ namespace CampNotFound.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Price,StartDate,EndDate,User_Id,CreatedBy,LastModifiedBy,CreatedDate,LastModifiedDate")] Event @event)
+        public ActionResult Create([Bind(Include = "Id,Name,Price,StartDate,EndDate,User_Id,CreatedBy,LastModifiedBy,CreatedDate,LastModifiedDate,Currency")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -67,6 +67,11 @@ namespace CampNotFound.Web.Controllers
 
         private List<SelectListItem> GetCurrencyDropdown()
         {
+            ItemsStore item = itemStoreRepository.FindById(id);
+            ViewBag.CategoryId = new SelectList(categoryRepository.Query().Get(),
+            "Id", "Name", item.CategoryId);
+
+            ViewBag.CurrencyId = new SelectList(db.CurrencySet.)
             List<SelectListItem> items = new List<SelectListItem>();
 
             items.Add(new SelectListItem { Text = "Action", Value = "0" });
