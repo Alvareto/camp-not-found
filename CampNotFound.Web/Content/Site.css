@@ -449,7 +449,10 @@ footer p {
 .event h3 {
     margin: 0;
     text-align: center;
-    padding-bottom: 0.5rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    white-space: nowrap;
 }
 .event h3 a {
     color: #000;
@@ -463,6 +466,11 @@ footer p {
 .event .short-description {
     padding: 1rem 0;
     margin: 0;
+    max-height: 11rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 }
 img.event-img {
     width: 100%;
@@ -486,6 +494,26 @@ img.event-img {
 }
 .next-event {
     font-weight: bold;
+}
+.price {
+    position: absolute;
+    right: -1rem;
+    height: 8rem;
+    width: 8rem;
+    background-color: orange;
+    border-radius: 50%;
+    top: -1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: rotate(34deg);
+}
+.price p {
+    margin: 0;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
 }
 
 /*LOGIN SCREEN*/

@@ -46,7 +46,6 @@
         </ul>
     </div>
     <div class="btns-wrapper">
-        <a class="btn">All Events</a>
         @Html.ActionLink("All Events", "List", new object { }, new { @class = "btn" })
         @Html.ActionLink("Create New Event", "Create", new object { }, new { @class = "btn" })
         @*<a class="btn">Create New Event</a>*@
@@ -60,12 +59,18 @@
 
             <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4">
                 <div class="event">
-                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
-                    <img class="event-img" src="~/Content/images/volleyball.jpg">
-                    
-                    <p class="short-description">Price: @Html.DisplayFor(modelItem => item.Price) @Html.DisplayFor(modelItem => item.Currency.ISOCode)<br />@Html.DisplayFor(modelItem => item.Description)</p>
-
+                    <div class="price">
+                        <p>Price</p>
+                        <p>@Html.DisplayFor(modelItem => item.Price) @Html.DisplayFor(modelItem => item.Currency.ISOCode)</p>
+                    </div>
+                    <div>
+                        <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                        <img class="event-img" src="~/Content/images/volleyball.jpg">
+                        <p class="short-description">@Html.DisplayFor(modelItem => item.Description)</p>
+                    </div>
+                    <button class="btn">Sign Up</button>
                 </div>
+
             </div>
         }
 
