@@ -28,6 +28,7 @@ namespace CampNotFound.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Board board = db.BoardSet.Find(id);
+            ViewBag.MessagesList = db.MessageSet.ToList();
             if (board == null)
             {
                 return HttpNotFound();
