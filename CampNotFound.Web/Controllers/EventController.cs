@@ -20,6 +20,12 @@ namespace CampNotFound.Web.Controllers
             return View(db.EventSet.ToList());
         }
 
+        // GET: Event
+        public ActionResult List()
+        {
+            return View(db.EventSet.ToList());
+        }
+
         // GET: Event/Details/5
         public ActionResult Details(int? id)
         {
