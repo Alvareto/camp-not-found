@@ -44,6 +44,7 @@ namespace CampNotFound.Web.Controllers
         // GET: Event/Create
         public ActionResult Create()
         {
+            ViewBag.SelectCurrencyOptions = GetCurrencyDropdown();
             return View();
         }
 
@@ -52,7 +53,7 @@ namespace CampNotFound.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Price,StartDate,EndDate,User_Id,CreatedBy,LastModifiedBy,CreatedDate,LastModifiedDate")] Event @event)
+        public ActionResult Create([Bind(Include = "Id,Name,Price,StartDate,EndDate,User_Id,CreatedBy,LastModifiedBy,CreatedDate,LastModifiedDate,Currency")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +64,8 @@ namespace CampNotFound.Web.Controllers
 
             return View(@event);
         }
+
+        private SelectList GetCurrencyDropdown() => new SelectList(db.CurrencySet.ToList(), "Id", "ISOCode");
 
         // GET: Event/Edit/5
         public ActionResult Edit(int? id)

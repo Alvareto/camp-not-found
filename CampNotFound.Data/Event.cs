@@ -33,6 +33,7 @@ namespace CampNotFound.Data
         public string LastModifiedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime LastModifiedDate { get; set; }
+        public string Description { get; set; }
     
         public virtual Currency Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

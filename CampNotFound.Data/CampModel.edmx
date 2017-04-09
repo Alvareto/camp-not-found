@@ -70,6 +70,7 @@
     <Property Name="LastModifiedBy" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Currency_Id" Type="int" Nullable="false" />
     <Property Name="Camp_Id" Type="int" Nullable="false" />
     <Property Name="Category_Id" Type="int" Nullable="false" />
@@ -367,6 +368,7 @@
           <NavigationProperty Name="ParentEvent" Relationship="CampModel.EventEvent" FromRole="Event1" ToRole="Event" />
           <NavigationProperty Name="Board" Relationship="CampModel.EventBoard" FromRole="Event" ToRole="Board" />
           <NavigationProperty Name="Photo" Relationship="CampModel.EventPhoto" FromRole="Event" ToRole="Photo" />
+          <Property Name="Description" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Vote">
           <Key>
@@ -528,6 +530,7 @@
           <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

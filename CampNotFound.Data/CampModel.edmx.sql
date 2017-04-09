@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/09/2017 01:42:23
--- Generated from EDMX file: C:\Users\marko.raguz\Documents\GitHub\camp-not-found\CampNotFound.Data\CampModel.edmx
+-- Date Created: 04/09/2017 05:42:29
+-- Generated from EDMX file: C:\Users\Ivan Grgurina\Source\Repos\camp-not-found\CampNotFound.Data\CampModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [CampDb];
+--USE [CampDb];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -96,6 +96,7 @@ CREATE TABLE [dbo].[EventSet] (
     [LastModifiedBy] nvarchar(max)  NOT NULL,
     [CreatedDate] datetime  NOT NULL,
     [LastModifiedDate] datetime  NOT NULL,
+    [Description] nvarchar(max)  NOT NULL,
     [Currency_Id] int  NOT NULL,
     [Camp_Id] int  NOT NULL,
     [Category_Id] int  NOT NULL,
