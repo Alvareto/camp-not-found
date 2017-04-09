@@ -467,12 +467,12 @@ footer p {
 .event .short-description {
     padding: 1rem 0;
     margin: 0;
-    max-height: 11rem;
+    max-height: 9rem;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-img.event-img {
+.event-img {
     width: 100%;
     max-width: 100%;
 }
@@ -508,6 +508,7 @@ img.event-img {
     flex-direction: column;
     justify-content: center;
     transform: rotate(34deg);
+    z-index: 999;
 }
 .price p {
     margin: 0;
@@ -774,4 +775,24 @@ img.event-img {
 .omb-wrapper .send-btn:hover {
     background-color: #1884B1;
     color: #fff;
+}
+
+.events-wrapper > div .event-img {
+    /* height: 100%; */
+    display: block;
+    height: 15rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
+.events-wrapper > div:nth-child(1) .event-img {
+    background-image: url(images/karaoke.jpg);
+}
+.events-wrapper > div:nth-child(2) .event-img {
+    background-image: url(images/surfing.jpg);
+}
+.events-wrapper > div:nth-child(3) .event-img {
+    background-image: url(images/volleyball.jpg);
+}
+.events-wrapper > div:nth-child(4) .event-img {
+    background-image: url(images/campfire.jpg);
 }
