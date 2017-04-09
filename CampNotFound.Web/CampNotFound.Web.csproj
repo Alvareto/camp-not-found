@@ -192,6 +192,15 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\cycling.jpg" />
+    <Content Include="Content\img\cycling2.jpg" />
+    <Content Include="Content\img\first-page.jpg" />
+    <Content Include="Content\img\food.jpg" />
+    <Content Include="Content\img\guitar.jpg" />
+    <Content Include="Content\img\kayaking.jpg" />
+    <Content Include="Content\img\recreation-and-sport.jpg" />
+    <Content Include="Content\img\tent.jpg" />
+    <Content Include="Content\img\volleyball.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -210,7 +219,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
