@@ -23,16 +23,17 @@ namespace CampNotFound.Web.Controllers
         // GET: Board/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Board board = db.BoardSet.Find(id);
+            //if (id == null)
+            //{
+
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            Board board = db.BoardSet.Find(1);
             ViewBag.MessagesList = db.MessageSet.ToList();
-            if (board == null)
-            {
-                return HttpNotFound();
-            }
+            //if (board == null)
+            //{
+            //    return HttpNotFound();
+            //}
             return View(board);
         }
 
