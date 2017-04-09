@@ -18,7 +18,11 @@ namespace CampNotFound.Web.Controllers
         // GET: Event
         public ActionResult Index()
         {
+            // categories
+            // events for today
+            ViewBag.CategoriesList = db.CategorySet.ToList();
             return View(db.EventSet.ToList());
+
         }
 
         // GET: Event

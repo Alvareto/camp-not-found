@@ -1,7 +1,9 @@
-﻿@model IEnumerable<CampNotFound.Data.Event>
+﻿@using CampNotFound.Data
+@model IEnumerable<CampNotFound.Data.Event>
 
 @{
     ViewBag.Title = "Index";
+    var t = (List<Category>)ViewBag.CategoriesList;
 }
 <div class="timeline-container">
     <div class="col-md-3 col-sm-3 datepicker-wrapper">
@@ -39,10 +41,11 @@
         <label>Show events:</label>
         <ul class="category-list">
             <li class="active-category">All events</li>
-            <li>Family Events</li>
-            <li>Children Events</li>
-            <li>Adults Events</li>
-            <li>Guest Events</li>
+            @foreach (var item in (List<Category>)ViewBag.CategoriesList)
+            {
+                <li>Family Events</li>
+
+            }
         </ul>
     </div>
     <div class="btns-wrapper">
@@ -54,9 +57,7 @@
 <div class="col-md-9 col-sm-9 right-column">
     <div class="events-wrapper">
         @foreach (var item in Model)
-        {
-            
-
+            {
             <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4">
                 <div class="event">
                     <div class="price">
@@ -68,7 +69,7 @@
                         <img class="event-img" src="~/Content/images/volleyball.jpg">
                         <p class="short-description">@Html.DisplayFor(modelItem => item.Description)</p>
                     </div>
-                    @Html.ActionLink("Sign Up", "Details", new { id = item.Id }, new { @class = "btn" })
+                    @Html.ActionLink("Find out more...", "Details", new { id = item.Id }, new { @class = "btn" })
                     @*<button class="btn">Sign Up</button>*@
                 </div>
 
