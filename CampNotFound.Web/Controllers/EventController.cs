@@ -35,10 +35,14 @@ namespace CampNotFound.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Event @event = db.EventSet.Find(id);
+
             if (@event == null)
             {
                 return HttpNotFound();
             }
+
+            ViewBag.Messages = @event.Board.SelectMany(o => o.Message).ToList() as List<Message>;
+
             return View(@event);
         }
 
@@ -62,7 +66,7 @@ namespace CampNotFound.Web.Controllers
             @event.Currency = db.CurrencySet.Find(currencyId);
             @event.Category = db.CategorySet.Find(categoryId);
             @event.ParentEvent = db.EventSet.Find(parentEventId);
-
+            
             var userId = GetCurrentUserId();
             @event.User_Id = userId;
             @event.CreatedBy = userId;
@@ -90,6 +94,8 @@ namespace CampNotFound.Web.Controllers
         // GET: Event/Edit/5
         public ActionResult Edit(int? id)
         {
+            return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -109,6 +115,8 @@ namespace CampNotFound.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Price,StartDate,EndDate,User_Id,CreatedBy,LastModifiedBy,CreatedDate,LastModifiedDate")] Event @event)
         {
+            return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+
             if (ModelState.IsValid)
             {
                 db.Entry(@event).State = EntityState.Modified;
@@ -121,6 +129,8 @@ namespace CampNotFound.Web.Controllers
         // GET: Event/Delete/5
         public ActionResult Delete(int? id)
         {
+            return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -138,6 +148,8 @@ namespace CampNotFound.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+
             Event @event = db.EventSet.Find(id);
             db.EventSet.Remove(@event);
             db.SaveChanges();

@@ -17,32 +17,34 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("App Not Found", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Book", "Book", "Home")</li>
+                    <li>@Html.ActionLink("Book", "Book", "Home", new { }, new { onclick = "javascript:return false;" , @class = "disabled" })</li>
                     <li>@Html.ActionLink("Events", "Index", "Event")</li>
-                    <li>@Html.ActionLink("Accomodation", "Accomodation", "Home")</li>
                     <li>@Html.ActionLink("Gallery", "Index", "MemoryAlbum")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Board", "Index", "Board")</li>
-                    <li>@Html.ActionLink("Camp", "Index", "Camp")</li>
-                    <li>@Html.ActionLink("Category", "Index", "Category")</li>
-                    <li>@Html.ActionLink("Currency", "Index", "Currency")</li>
-                    <li>@Html.ActionLink("MemoryAlbum", "Index", "MemoryAlbum")</li>
-                    <li>@Html.ActionLink("Message", "Index", "Message")</li>
-                    <li>@Html.ActionLink("Photo", "Index", "Photo")</li>
-                    <li>@Html.ActionLink("Vote", "Index", "Vote")</li>
-
+                    @if (Request.IsAuthenticated)
+                    {
+                        @*<li>@Html.ActionLink("Accomodation", "Accomodation", "Home")</li>*@
+                        @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        <li>@Html.ActionLink("Message Board", "Details", "Board")</li>
+                        <li>@Html.ActionLink("Camp", "Index", "Camp")</li>
+                        @*<li>@Html.ActionLink("Category", "Index", "Category")</li>*@
+                        @*<li>@Html.ActionLink("Currency", "Index", "Currency")</li>*@
+                        @*<li>@Html.ActionLink("MemoryAlbum", "Index", "MemoryAlbum")</li>*@
+                        @*<li>@Html.ActionLink("Message", "Index", "Message")</li>*@
+                        @*<li>@Html.ActionLink("Photo", "Index", "Photo")</li>*@
+                        @*<li>@Html.ActionLink("Vote", "Index", "Vote")</li>*@
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody() 
+        @RenderBody()
     </div>
     <footer>
         <p>&copy; @DateTime.Now.Year - Name Not Found</p>

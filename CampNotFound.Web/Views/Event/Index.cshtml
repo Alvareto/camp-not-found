@@ -68,7 +68,8 @@
                         <img class="event-img" src="~/Content/images/volleyball.jpg">
                         <p class="short-description">@Html.DisplayFor(modelItem => item.Description)</p>
                     </div>
-                    <button class="btn">Sign Up</button>
+                    @Html.ActionLink("Sign Up", "Details", new { id = item.Id }, new { @class = "btn" })
+                    @*<button class="btn">Sign Up</button>*@
                 </div>
 
             </div>

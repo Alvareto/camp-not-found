@@ -1,90 +1,74 @@
-﻿@model CampNotFound.Data.Event
+﻿@using CampNotFound.Data
+@model CampNotFound.Data.Event
 
 @{
     ViewBag.Title = "Details";
+    List<Message> t = ViewBag.Messages;
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Event</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User_Id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User_Id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastModifiedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastModifiedBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastModifiedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastModifiedDate)
-        </dd>
-
-    </dl>
+<div class="col-sm-12 event-big-img" style="background-image: url(../../Content/images/volleyball.jpg)">
+    <div class="main-header">
+        <h1>@Html.DisplayFor(model => model.Name)</h1>
+        <p>@Html.DisplayFor(model => model.Description)</p>
+        <a class="btn disabled">Join the experience</a>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="offers">
+    <h1 class="col-xs-12">Available events</h1>
+    <div class="col-m-9 col-xs-7">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="event available-event">
+                <h3>@Model.StartDate.ToShortDateString()</h3>
+                <div class="event-time-wrapper">
+                    <label>Time:</label>
+                    <p>@Model.StartDate.ToShortTimeString() - @Model.EndDate.ToShortTimeString()</p>
+                </div>
+                <div class="event-time-wrapper">
+                    <label>@Html.DisplayNameFor(model => model.Price):</label>
+                    <p>@Html.DisplayFor(model => model.Price)</p>
+                </div>
+                <div class="people-no">
+                    <label>Number of people to sign up:</label>
+                    <input class="input-field form-control" type="number" />
+                </div>
+                <a class="btn disabled">Sign up</a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="offer">
+                <div class="img-wrapper house-offer">
+                    <h3>Accomodation</h3>
+                </div>
+                <p>You can choose between mobile houses with different bed </p>
+                <a class="btn disabled">See offer</a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="offer">
+                <div class="img-wrapper food-offer">
+                    <h3>Food</h3>
+                </div>
+                <p>There are many different restaurants around the camp</p>
+                <a class="btn disabled">See all restaurants</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-m-3 col-xs-5 col-right">
+
+
+        <div class="omb-wrapper">
+            <h2>Comments</h2>
+            <ul>
+
+                @foreach (var item in (List<Message>)ViewBag.Messages)
+                {
+                    <li><span class="user">@item.User_Id</span>@item.Text</li>
+                }
+
+            </ul>
+            <input type="text" class="input-field form-control" />
+            <span class="send-btn btn disabled">Send</span>
+        </div>
+    </div>
+</div>
