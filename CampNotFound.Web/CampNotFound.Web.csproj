@@ -191,13 +191,16 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\campfire.jpg" />
     <Content Include="Content\images\cycling.jpg" />
     <Content Include="Content\images\cycling2.jpg" />
     <Content Include="Content\images\first-page.jpg" />
     <Content Include="Content\images\food.jpg" />
     <Content Include="Content\images\guitar.jpg" />
+    <Content Include="Content\images\karaoke.jpg" />
     <Content Include="Content\images\kayaking.jpg" />
     <Content Include="Content\images\recreation-and-sport.jpg" />
+    <Content Include="Content\images\surfing.jpg" />
     <Content Include="Content\images\tent.jpg" />
     <Content Include="Content\images\volleyball.jpg" />
     <Content Include="favicon.ico" />

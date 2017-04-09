@@ -25,6 +25,7 @@
                 <span class="timeline-day"><span class="day-name">Fri</span><span class="active-day-indicator"></span></span>
                 <span class="timeline-day"><span class="day-name">Sat</span><span class="active-day-indicator"></span></span>
                 <span class="timeline-day"><span class="day-name">Sun</span><span class="active-day-indicator"></span></span>
+            
             </span>
             <div class="arrows-wrapper">
                 <span class="next-day icon-angle-right"></span>
@@ -65,7 +66,7 @@
                     </div>
                     <div>
                         <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
-                        <img class="event-img" src="~/Content/images/volleyball.jpg">
+                        <div class="event-img"></div>
                         <p class="short-description">@Html.DisplayFor(modelItem => item.Description)</p>
                     </div>
                     @Html.ActionLink("Find out more...", "Details", new { id = item.Id }, new { @class = "btn" })
@@ -76,6 +77,15 @@
         }
 
         <div class="clear"></div>
+       
     </div>
 </div>
 <div class="clear"></div>
+
+<script>
+    jQuery('.timeline-day').on('click', function (e) {
+        jQuery('.active-day').removeClass('active-day');
+        this.addClass("active-day");
+        e.preventDefault();
+    });
+</script>
