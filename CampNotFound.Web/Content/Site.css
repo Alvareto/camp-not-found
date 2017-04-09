@@ -50,6 +50,7 @@
 body {
     padding-top: 50px;
     padding-bottom: 0px;
+    background: ghostwhite;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -485,4 +486,37 @@ img.event-img {
 }
 .next-event {
     font-weight: bold;
+}
+
+/*LOGIN SCREEN*/
+.login-screen, .register-screen {
+    margin: 4rem auto;
+    width: 70%;
+    background-color: #fff;
+    padding: 4rem;
+    border-radius: 4px;
+}
+.login-screen h2, .register-screen h2 {
+    margin: 0;
+    padding: 0 1.5rem;
+    color: #363A3C;
+}
+.register-screen h4 {
+    margin: 0;
+    padding: 1.5rem 1.5rem 0;
+}
+.login-screen label, .register-screen label {
+    color: #363A3C;
+}
+.submit-btn .btn {
+    background-color: #00abd3;
+    color: #fff;
+}
+.submit-btn .btn:hover {
+    background-color: #1884B1;
+}
+.login-screen input.form-control:focus, .register-screen input.form-control:focus {
+    outline: 0;
+    border-color: #ffa429;
+    box-shadow: 0 0 3px #ffa429;
 }
